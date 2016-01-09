@@ -30,7 +30,8 @@ class App < Sinatra::Base
       end
     end
   end
-  
+
 end
 
 require './routes/init'
+require './helpers/init'
