@@ -32,10 +32,33 @@
           %a.navbar-brand{:href => "/"} Home
         .navbar-collapse.collapse
           %ul.nav.navbar-nav
-            %li
-              %a{href: "/#"} Nav 1
-            %li
-              %a{href: '/#'} Nav 2
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
+                Courses
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  %a{href: "/course/list"}
+                    %i.fa.fa-list
+                    List
+                %li
+                  %a{href: "/course/add"}
+                    %i.fa.fa-plus-circle
+                    Add
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
+                Users
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  %a{href: "/user/list"}
+                    %i.fa.fa-list
+                    List
+                %li
+                  %a{href: "/user/add"}
+                    %i.fa.fa-plus-circle
+                    Add
+
           %ul.nav.navbar-nav.navbar-right
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
@@ -44,7 +67,7 @@
               %ul.dropdown-menu
                 -if !@user.nil?
                   %li
-                    %a{href: '/user'} Profile
+                    %a{href: "/user/profile/#{@user.id}"} Profile
                   %li
                     %a{href: '/logout'} Logout
                 -else

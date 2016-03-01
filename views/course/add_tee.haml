@@ -1,0 +1,14 @@
+%h3
+  Add a new set of tees to
+  =@course.name
+%form{action: '#', method: 'post'}
+  .form-group
+    %label{for: 'colour'} Colour
+    %input.form-control{type: 'text', name: 'colour', placeholder: 'Hot Pink'}
+  .form-group
+    %label{for: 'acr'} ACR
+    %input.form-control{type: 'text', name: 'acr', placeholder: '72'}
+  .form-group
+    %label{for: 'slope'} Slope
+    %input.form-control{type: 'text', name: 'slope', placeholder: '113'}
+  %button.btn.btn-default{type: 'submit'} Add course!

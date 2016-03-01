@@ -1,4 +1,4 @@
-ruby '2.2.1'
+ruby '2.3.0'
 source 'https://rubygems.org' do
 
   group :core do
@@ -17,6 +17,7 @@ source 'https://rubygems.org' do
   group :development do
     gem 'sqlite3'
     gem 'tux'
+    gem 'rerun'
   end
 
   group :production do

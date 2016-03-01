@@ -1,0 +1,40 @@
+%h1
+  %img.profile{src: @this_user.image}
+  =@this_user.name
+.row
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          %i.fa.fa-fw.fa-user
+          %span.text User Profile
+      .table-responsive
+        .table.table-hover
+          %table.table.table-hover
+            %tbody
+              %tr
+                %th{scope: :row} Display Name
+                %td=@this_user.first_name
+              %tr
+                %th{scope: :row} Email
+                %td=@this_user.email
+              %tr
+                %th{scope: :row} Handicap
+                %td=@this_user.handicap
+    -if @this_user == @user
+      %a{href: '/user/edit'}
+        %button.button-default Edit my profile
+  .col-md-8
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          %i.fa.fa-fw.fa-star
+          %span.text Recent rounds
+      .table-responsive
+        .table.table-hover
+          %table.table.table-hover.tablesorter
+            %thead
+              %tr
+                %th Coming soon
+            %tbody
+              

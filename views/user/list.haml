@@ -1,0 +1,13 @@
+%h3 Users in the system
+%table.table.table-hover
+  %thead
+    %th Name
+    %th Email
+    %th Handicap
+  %tbody
+    -@users.each do |u|
+      %tr
+        %td
+          %a{href: "/user/profile/#{u.id}"}=u.name
+        %td=u.email
+        %td=u.handicap

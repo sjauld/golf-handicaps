@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160130032055) do
+ActiveRecord::Schema.define(version: 20160229100559) do
 
   create_table "competitions", force: :cascade do |t|
-    t.string "name"
-    t.string "image"
+    t.string  "name"
+    t.string  "image"
+    t.integer "user_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -28,6 +29,8 @@ ActiveRecord::Schema.define(version: 20160130032055) do
     t.string  "name"
     t.string  "image"
     t.integer "dsr"
+    t.integer "season_id"
+    t.integer "tee_id"
   end
 
   create_table "rounds", force: :cascade do |t|
@@ -36,28 +39,34 @@ ActiveRecord::Schema.define(version: 20160130032055) do
     t.string  "format"
     t.integer "score"
     t.integer "points"
+    t.integer "user_id"
+    t.integer "game_id"
+    t.integer "tee_id"
   end
 
   create_table "seasons", force: :cascade do |t|
-    t.string "name"
-    t.date   "start_date"
-    t.date   "end_date"
-    t.string "image"
+    t.string  "name"
+    t.date    "start_date"
+    t.date    "end_date"
+    t.string  "image"
+    t.integer "competition_id"
   end
 
   create_table "tees", force: :cascade do |t|
     t.string  "colour"
     t.integer "acr"
     t.integer "slope"
+    t.integer "course_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "image"
-    t.float  "handicap"
+    t.string  "name"
+    t.string  "email"
+    t.string  "first_name"
+    t.string  "last_name"
+    t.string  "image"
+    t.float   "handicap"
+    t.integer "competition_id"
   end
 
 end

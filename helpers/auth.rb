@@ -9,10 +9,8 @@ module Auth
           last_name: session['last_name'],
           image: session['image']
         )
-        flash[:notice] = "New user successfully created for #{session[:email]}"
       end
       @user = User.where(email: session['email']).first
-      puts "User: #{@user.inspect}"
     end
     @user
   end

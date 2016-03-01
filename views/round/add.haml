@@ -1,0 +1,66 @@
+%h3 Input a round!
+%form{action: '#', method: 'post'}
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        %span.text=@course.name
+    .panel-body
+      .col-md-4
+        .form-group
+          %label Tee
+          .input-group
+            %input.form-control{disabled: 'disabled', value: @tee.colour}
+            %input{type: 'hidden', name: 'tee', value: @tee.id}
+      .col-md-4
+        .form-group
+          %label ACR
+          .input-group
+            %input.form-control{disabled: 'disabled', value: @tee.acr}
+      .col-md-4
+        .form-group
+          %label Slope
+          .input-group
+            %input.form-control{disabled: 'disabled', value: @tee.slope}
+      .col-md-4
+        .form-group
+          %label{for: 'date'} Date
+          .input-group#date
+            %span.input-group-addon{for: 'date'}
+              %i.fa.fa-calendar
+            %input.form-control{type: 'text', name: 'date', placeholder: '2016-02-29', required: true}
+      .col-md-4
+        .form-group
+          %label.control-label{for: 'user'} User
+          %select.form-control{ name: 'user', required: true}
+            %optgroup{label: 'You'}
+              %option{value: @user.id}=@user.name
+            %optgroup{label: 'Other Registered Users'}
+              -all_users.each do |user|
+                %option{value: user.id}=user.name
+      .col-md-4
+        .form-group
+          %label.control-label{for: 'comp_type'} Competition type
+          %select.form-control{name: 'comp_type', required: true}
+            %option{value: 'S'} Stableford
+            %option{value: 'P'} Par
+            %option{value: 'K'} Stroke
+      .col-md-4
+        .form-group
+          %label.control-label{for: 'score'} Score
+          .input-group
+            %input.form-control{type: 'text', name: 'score', required: true, placeholder: '36'}
+      .col-md-4
+        .form-group
+          %label.control-label{for: 'played_off'} Played off
+          .input-group
+            %input.form-control{type: 'text', name: 'played_off', required: true, placeholder: '11'}
+      .col-md-4
+        .form-group
+          %label.control-label Submit
+          .input-group
+            %button.btn.btn-default{type: 'submit'} Add round!
+
+:javascript
+  $(document).ready( function() {
+    $('#date').datetimepicker({locale: 'en-au', format: 'YYYY-MM-DD'});
+  });

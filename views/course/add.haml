@@ -1,0 +1,12 @@
+%h3 Add a new course
+%form{action: '#', method: 'post'}
+  .form-group
+    %label{for: 'name'} Name
+    %input.form-control{type: 'text', name: 'name', placeholder: 'Chatswoo GC'}
+  .form-group
+    %label{for: 'website'} Website
+    %input.form-control{type: 'text', name: 'website', placeholder: 'https://www.chatswoo.com'}
+  .form-group
+    %label{for: 'image'} Image
+    %input.form-control{type: 'text', name: 'image', placeholder: 'https://www.chatswoo.com/golf.jpg'}
+  %button.btn.btn-default{type: 'submit'} Add course!

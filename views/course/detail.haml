@@ -1,0 +1,21 @@
+%h3
+  =@course.name
+  %a{href: @course.website}
+    %i.fa.fa-internet-explorer
+%table.table.table-hover
+  %thead
+    %th{scope: :col} Tees
+    %th{scope: :col} ACR
+    %th{scope: :col} Slope
+    %th{scope: :col} Add Round
+  %tbody
+    -@tees.each do |t|
+      %tr
+        %td=t.colour
+        %td=t.acr
+        %td=t.slope
+        %td
+          %a{href: "/round/add?tee=#{t.id}"}
+            %i.fa.fa-plus-circle
+%p
+  %a{href: "/course/#{@course.id}/add-tee"} Add a set of tees

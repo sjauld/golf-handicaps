@@ -1,0 +1,15 @@
+%h3 Add a user
+%form{action: '#', method: 'post'}
+  .form-group
+    %label{for: 'name'} Name
+    %input.form-control{type: 'text', name: 'name', placeholder: 'Bruce'}
+  .form-group
+    %label{for: 'name'} Nickname
+    %input.form-control{type: 'text', name: 'first_name', placeholder: 'Bruce'}  
+  .form-group
+    %label{for: 'website'} Email
+    %input.form-control{type: 'text', name: 'email', placeholder: 'bruce@rules.com'}
+  .form-group
+    %label{for: 'image'} Image
+    %input.form-control{type: 'text', name: 'image', placeholder: 'https://www.chatswoo.com/golf.jpg'}
+  %button.btn.btn-default{type: 'submit'} Add user!

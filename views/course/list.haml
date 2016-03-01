@@ -1,0 +1,12 @@
+%h3 Courses in the system
+%table.table.table-hover
+  %thead
+    %th Name
+    %th Website
+  %tbody
+    -@courses.each do |c|
+      %tr
+        %td
+          %a{href: "/course/#{c.id}"}=c.name
+        %td
+          %a{href: c.website}=c.website
