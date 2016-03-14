@@ -24,4 +24,14 @@ class App < Sinatra::Base
     haml :'user/profile'
   end
 
+  # self sign-up
+  post '/signup' do
+    # generate a token and email it
+    token = SecureRandom.urlsafe_base64
+    
+    flash[:notice] = 'Please check your email for next steps'
+    redirect '/'
+  end
+
+
 end

@@ -19,8 +19,18 @@ class App < Sinatra::Base
     haml :_404
   end
 
-  # login section
   get '/login' do
+    @title = "log in"
+    if session['email'].nil?
+      haml :login
+    else
+      flash[:notice] = 'You are already logged in'
+      redirect to ('/')
+    end
+  end
+
+  # login section
+  get '/login-with-google' do
     @title = "log in"
     if session['email'].nil?
       redirect to('/auth/google_oauth2')
