@@ -14,6 +14,8 @@ source 'https://rubygems.org' do
     gem 'dotenv'
     gem 'bcrypt', '~> 3.1.7'
     gem 'redis'
+    gem 'postmark'
+    gem 'mail'
   end
 
   group :development do
@@ -34,5 +36,6 @@ source 'https://rails-assets.org' do
     gem 'rails-assets-bootstrap3-datetimepicker'
     gem 'rails-assets-jquery'
     gem 'rails-assets-moment'
+    gem 'rails-assets-jquery.validation'
   end
 end

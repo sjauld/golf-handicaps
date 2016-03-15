@@ -38,6 +38,9 @@ GEM
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
+    mail (2.6.3)
+      mime-types (>= 1.16, < 3)
+    mime-types (2.99.1)
     minitest (5.8.4)
     multi_json (1.11.2)
     multi_xml (0.5.5)
@@ -60,6 +63,9 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     pg (0.18.4)
+    postmark (1.7.1)
+      json
+      rake
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -72,6 +78,8 @@ GEM
       rails-assets-moment (>= 2.9.0)
       rails-assets-moment-timezone (>= 0.4.0)
     rails-assets-jquery (2.2.1)
+    rails-assets-jquery.validation (1.15.0)
+      rails-assets-jquery (>= 1.7.2)
     rails-assets-moment (2.11.2)
     rails-assets-moment-timezone (0.5.0)
       rails-assets-moment (>= 2.6.0)
@@ -142,11 +150,14 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)!
   dotenv!
   haml!
+  mail!
   omniauth-google-oauth2!
   pg!
+  postmark!
   rails-assets-bootstrap!
   rails-assets-bootstrap3-datetimepicker!
   rails-assets-jquery!
+  rails-assets-jquery.validation!
   rails-assets-moment!
   redis!
   rerun!

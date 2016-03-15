@@ -29,6 +29,17 @@ class App < Sinatra::Base
     end
   end
 
+  post '/login' do
+    if @user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
+      flash[:notice] = 'Log in successful'
+      session['email'] = @user.email
+      redirect '/'
+    else
+      flash[:error] = 'Log in failed'
+      redirect '/login'
+    end
+  end
+
   # login section
   get '/login-with-google' do
     @title = "log in"

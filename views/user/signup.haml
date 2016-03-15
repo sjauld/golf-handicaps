@@ -1,0 +1,37 @@
+.container
+  .col-md-8
+    .row
+      %h4 Finish signing up!
+      %form{role: 'form', method: 'post', action: '/signup/complete '}
+        %input.form-control{type: 'hidden', name: 'email', required: 'required', value: @email}
+        .row
+          .form-group.col-md-6
+            %label Password
+            %input.form-control#password{type: 'password', minlength: '8', name:'password', required: 'required'}
+            .help-block Minimum 8 characters
+          .form-group.col-md-6
+            %label Confirm Password
+            %input.form-control#password2{type: 'password', name: 'password2', required: 'required'}
+            .help-block.with-errors
+        .row
+          .form-group.col-md-4
+            %label First Name
+            %input.form-control{type: 'text', name: 'first_name'}
+          .form-group.col-md-4
+            %label Last Name
+            %input.form-control{type: 'text', name: 'last_name'}
+          .form-group.col-md-4
+            %label Nickname
+            %input.form-control{type: 'text', name: 'name'}
+        .row
+          .form-group.col-md-4
+            %button.btn.btn-default{type: 'submit'} Log In!
+:javascript
+  $( "form" ).validate({
+    rules: {
+      password: "required",
+      password2: {
+        equalTo: "#password"
+      }
+    }
+  });
