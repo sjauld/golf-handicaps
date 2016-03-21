@@ -21,6 +21,7 @@ class App < Sinatra::Base
   # profile page
   get '/user/profile/:id' do
     @this_user = User.find(params[:id])
+    @rounds = @this_user.rounds.order(played_date: :desc).limit(20)
     haml :'user/profile'
   end
 
