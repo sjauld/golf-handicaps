@@ -21,6 +21,19 @@ class App < Sinatra::Base
   # profile page
   get '/user/profile/:id' do
     @this_user = User.find(params[:id])
+    @rounds = @this_user.rounds.order(played_date: :desc).limit(20)
+    #TODO: update rounds upon adding rather than here!
+    @rounds.each do |r|
+      r.update_round_statistics
+    end
+
+    # move all of this
+    # work out how many rounds will be used for handicapping purposes
+    n = [8,[1,(@rounds.count/2.0-2).ceil].max].min
+    counted_rounds = @rounds.reorder(differential: :asc).limit(n)
+    @this_user.handicap = (((counted_rounds.map{|x| x.differential}.reduce(:+) / n) * 0.93 * 10).floor / 10.0)
+    puts @this_user.handicap
+    @this_user.save
     haml :'user/profile'
   end
 
