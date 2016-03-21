@@ -17,7 +17,8 @@ module Auth
 
   def authorize
     if @user.nil? || @user['email'].nil?
-      redirect to('/401')
+      flash[:notice] = 'You need to login to access that page'
+      redirect to('/login')
     end
   end
 
