@@ -1,5 +1,9 @@
 class App < Sinatra::Base
 
+  before '/round/*' do
+    authorize
+  end
+
   # add rounds
   # TODO: some authentication over who can add rounds for whom
   get '/round/add' do
@@ -9,13 +13,15 @@ class App < Sinatra::Base
   end
 
   post '/round/add' do
-    User.find(params[:user]).rounds.create(
+    round = User.find(params[:user]).rounds.create(
       played_date: Date.parse(params['date']),
       playing_handicap: params['played_off'],
       format: params['comp_type'],
       score: params['score'],
       tee_id: params['tee']
     )
+    #TODO: can this be done in the model?
+    round.update_round_statistics
     flash[:notice] = 'Round added'
     redirect "/round/add?tee=#{params['tee']}"
   end
