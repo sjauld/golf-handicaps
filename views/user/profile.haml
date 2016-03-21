@@ -35,6 +35,16 @@
           %table.table.table-hover.tablesorter
             %thead
               %tr
-                %th Coming soon
+                %th{scope: :col} Date
+                %th{scope: :col} Course
+                %th{scope: :col} Format
+                %th{scope: :col} Score
+                %th{scope: :col} Differential
             %tbody
-              
+              -@rounds.each do |r|
+                %tr
+                  %th{scope: :row}=r.played_date
+                  %td=r.tee.course.name
+                  %td=r.format
+                  %td=r.score
+                  %td="%.1f" % r.differential
