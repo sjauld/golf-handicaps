@@ -33,7 +33,7 @@ class App < Sinatra::Base
 
   post '/course/:id/add-tee' do
     @course = Course.find(params[:id])
-    @course.tees.new({colour: params[:colour], acr: params[:acr], slope: params[:slope]}).save
+    @course.tees.new({colour: params[:colour], acr: params[:acr], slope: params[:slope], par: params[:par]}).save
     flash[:notice] = 'Tee created successfully!'
     redirect "/course/#{params[:id]}"
   end

@@ -4,11 +4,14 @@
 %form{action: '#', method: 'post'}
   .form-group
     %label{for: 'colour'} Colour
-    %input.form-control{type: 'text', name: 'colour', placeholder: 'Hot Pink'}
+    %input.form-control{type: 'text', name: 'colour', placeholder: 'Hot Pink', required: 'required'}
   .form-group
     %label{for: 'acr'} ACR
-    %input.form-control{type: 'text', name: 'acr', placeholder: '72'}
+    %input.form-control{type: 'text', name: 'acr', placeholder: '72', required: 'required'}
+  .form-group
+    %label{for: 'par'} Par
+    %input.form-control{type: 'text', name: 'par', placeholder: '72', required: 'required'}
   .form-group
     %label{for: 'slope'} Slope
-    %input.form-control{type: 'text', name: 'slope', placeholder: '113'}
+    %input.form-control{type: 'text', name: 'slope', placeholder: '113', required: 'required'}
   %button.btn.btn-default{type: 'submit'} Add course!
