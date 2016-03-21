@@ -9,8 +9,11 @@ class Round < ActiveRecord::Base
       update_attribute(:daily_scratch_rating,self.tee.acr)
       update_attribute(:adjusted_gross_score,self.tee.par + self.playing_handicap + 36 - self.score)
       update_attribute(:differential,(self.adjusted_gross_score - self.daily_scratch_rating) * 113 / self.tee.slope)
+      # update the handicap of the player
+      self.user.update_handicap
     # otherwise, apply formula and update all rounds
     else
+      # TODO: build
       all_rounds = Game.find(self.game_id)
     end
   end
