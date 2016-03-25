@@ -1,0 +1,21 @@
+.container
+  .col-md-8
+    .row
+      %h4 Finish signing up!
+      %form{role: 'form', method: 'post', action: '#'}
+        .row
+          .form-group.col-md-4
+            %label Email
+            %input.form-control{type: 'text', name: 'email'}
+          .form-group.col-md-4
+            %label First Name
+            %input.form-control{type: 'text', name: 'first_name'}
+          .form-group.col-md-4
+            %label Last Name
+            %input.form-control{type: 'text', name: 'last_name'}
+          .form-group.col-md-4
+            %label Nickname
+            %input.form-control{type: 'text', name: 'name'}
+        .row
+          .form-group.col-md-4
+            %button.btn.btn-default{type: 'submit'} Log In!
