@@ -22,8 +22,8 @@
                 %th{scope: :row} Handicap
                 %td=@this_user.handicap
     -if @this_user == @user
-      %a{href: '/users/edit'}
-        %button.button-default Edit my profile
+      %a{href: '/users/edit'} Edit my profile
+      | 
     -if @this_user == @user || logged_in_user_is_admin?
       %a{href: "/users/#{@this_user.id}/refresh"} Force handicap refresh
   .col-md-8
