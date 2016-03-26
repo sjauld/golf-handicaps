@@ -18,6 +18,14 @@ class App < Sinatra::Base
     redirect "/user/profile/#{user.id}"
   end
 
+  # refresh handicap
+  get '/user/profile/:id/refresh' do
+    @this_user = User.find(params[:id])
+    @this_user.update_handicap
+    flash[:notice] = 'Handicap refreshed'
+    haml :'/user/profile'
+  end
+
   # profile page
   get '/user/profile/:id' do
     @this_user = User.find(params[:id])

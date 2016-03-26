@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
     # select the best rounds
     counted_rounds = rounds.reorder(differential: :asc).limit(n)
     # maybe there is a better way instead of map reduce but I couldn't work it out
-    update_attribute(:handicap,(((counted_rounds.map{|x| x.differential}.reduce(:+) / n) * 0.93 * 10).floor / 10.0))
+    update_attribute(:handicap,(((counted_rounds.map{|x| [x.differential,40].min}.reduce(:+) / n) * 0.93 * 10).floor / 10.0))
   end
 
 end
