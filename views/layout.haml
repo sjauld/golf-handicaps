@@ -47,6 +47,19 @@
                     Add
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
+                Rounds
+                %b.caret
+              %ul.dropdown-menu
+                -# %li
+                -#   %a{href: "/course/list"}
+                -#     %i.fa.fa-list
+                -#     List
+                %li
+                  %a{href: "/round/import"}
+                    %i.fa.fa-plus-circle
+                    Bulk Add
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
                 Users
                 %b.caret
               %ul.dropdown-menu
