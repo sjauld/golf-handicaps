@@ -44,7 +44,17 @@
               -@rounds.each do |r|
                 %tr
                   %th{scope: :row}=r.played_date
-                  %td=r.tee.course.name
+                  %td=r.tee.course.name rescue "wtf"
                   %td=r.format
                   %td=r.score
-                  %td="%.1f" % r.differential
+                  %td
+                    ="%.1f" % r.differential.to_f
+                    -if @user.id == 1 || @this_user.id == @user.id
+                      %a{href: "/round/#{r.id}/delete"}
+                        %i.fa.fa-bomb
+            %tfoor
+              %tr
+                %td{colspan: 5}
+                  Page 
+                  -(1..10).each do |n|
+                    %a{href: "?p=#{n}"}=n

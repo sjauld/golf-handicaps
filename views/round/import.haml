@@ -1,0 +1,14 @@
+%h3 Bulk import tool!
+%form{action: '#', method: 'post', enctype: 'multipart/form-data'}
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        %span.text CSV Importer
+    .panel-body
+      .col-md-12
+        .form-group
+          %label{for: 'file'} Upload file
+          %input{type: 'file', name: 'file', id: 'file'}
+          %p.help-block Your csv should include the following columns: [Date,User ID,Tee ID, Comp, Score, Played off]
+          %p.help-block Comp options: S (Stableford), P (Par), K (Stroke)
+        %button.btn.btn-default{type: 'submit'} Upload
