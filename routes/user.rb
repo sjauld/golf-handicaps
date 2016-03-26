@@ -1,33 +1,33 @@
 class App < Sinatra::Base
 
   # user list
-  get '/user/list' do
+  get '/users' do
     @users = User.all
     haml :'user/list'
   end
 
   # add a user
-  get '/user/add' do
+  get '/users/add' do
     haml :'user/add'
   end
 
-  post '/user/add' do
+  post '/users/add' do
     nice_params = escape_html_for_set(params)
     user = User.create({name: nice_params['name'], first_name: nice_params['first_name'], email: nice_params['email'], image: nice_params['image']})
     flash[:notice] = 'User created successfully'
-    redirect "/user/profile/#{user.id}"
+    redirect "/users/#{user.id}"
   end
 
   # refresh handicap
-  get '/user/profile/:id/refresh' do
+  get '/users/:id/refresh' do
     @this_user = User.find(params[:id])
     @this_user.update_handicap
     flash[:notice] = 'Handicap refreshed'
-    redirect "/user/profile/#{params[:id]}"
+    redirect "/users/#{params[:id]}"
   end
 
   # profile page
-  get '/user/profile/:id' do
+  get '/users/:id' do
     @this_user = User.find(params[:id])
     @page = (params[:p] || 1).to_i
     @rounds = @this_user.rounds.order(played_date: :desc).limit(20).offset((@page - 1) * 20)
@@ -131,7 +131,7 @@ class App < Sinatra::Base
       password_confirmation:  password
     )
     flash[:success] = 'User created'
-    redirect "/user/profile/#{this_user.id}"
+    redirect "/users/#{this_user.id}"
   end
 
 end

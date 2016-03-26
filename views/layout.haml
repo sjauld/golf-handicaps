@@ -64,11 +64,11 @@
                 %b.caret
               %ul.dropdown-menu
                 %li
-                  %a{href: "/user/list"}
+                  %a{href: "/users"}
                     %i.fa.fa-list
                     List
                 %li
-                  %a{href: "/user/add"}
+                  %a{href: "/users/add"}
                     %i.fa.fa-plus-circle
                     Add
 
@@ -80,7 +80,7 @@
               %ul.dropdown-menu
                 -if !@user.nil?
                   %li
-                    %a{href: "/user/profile/#{@user.id}"} Profile
+                    %a{href: "/users/#{@user.id}"} Profile
                   %li
                     %a{href: '/logout'} Logout
                 -else
