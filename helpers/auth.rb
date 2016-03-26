@@ -28,10 +28,14 @@ module Auth
 
   # TODO: create admin users instead of just using user #1
   def authorize_admin
-    unless @user.id == 1
+    unless logged_in_user_is_admin?
       flash[:error] = 'You are not authorised to do that'
       redirect '/'
     end
+  end
+
+  def logged_in_user_is_admin?
+    @user.nil? ? false : @user.admin?
   end
 
 end

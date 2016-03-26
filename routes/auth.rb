@@ -4,10 +4,6 @@ class App < Sinatra::Base
     build_user
   end
 
-  before '/user/*' do
-    authorize
-  end
-
   # Unauthorized
   get '/401' do
     status 401

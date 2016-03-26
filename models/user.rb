@@ -14,4 +14,9 @@ class User < ActiveRecord::Base
     update_attribute(:handicap,[(((counted_rounds.map{|x| [x.differential,40].min}.reduce(:+) / n) * 0.93 * 10).floor / 10.0),36.4].min)
   end
 
+  def admin?
+    # TODO: update the database to include an admin flag
+    self.email == ENV['ADMIN_EMAIL_ADDRESS']
+  end
+
 end

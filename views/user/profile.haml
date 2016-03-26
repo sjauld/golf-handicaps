@@ -22,10 +22,10 @@
                 %th{scope: :row} Handicap
                 %td=@this_user.handicap
     -if @this_user == @user
-      %a{href: '/user/edit'}
+      %a{href: '/users/edit'}
         %button.button-default Edit my profile
-    -if @this_user == @user || @user.id == 1
-      %a{href: "/user/profile/#{@this_user.id}/refresh"} Force handicap refresh
+    -if @this_user == @user || logged_in_user_is_admin?
+      %a{href: "/users/#{@this_user.id}/refresh"} Force handicap refresh
   .col-md-8
     .panel.panel-default
       .panel-heading
@@ -51,7 +51,7 @@
                   %td=r.score
                   %td
                     ="%.1f" % r.differential.to_f
-                    -if @user.id == 1 || @this_user.id == @user.id
+                    -if logged_in_user_is_admin? || @this_user.id == @user.id
                       %a{href: "/round/#{r.id}/delete"}
                         %i.fa.fa-bomb
             %tfoor
