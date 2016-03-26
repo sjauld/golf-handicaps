@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :competitions
   has_secure_password validations: false
 
+  # TODO: add sex of user and apply different rules for women
   def update_handicap
     rounds = self.rounds.order(played_date: :desc).limit(20)
     # work out how many rounds will be used for handicapping purposes
@@ -10,7 +11,7 @@ class User < ActiveRecord::Base
     # select the best rounds
     counted_rounds = rounds.reorder(differential: :asc).limit(n)
     # maybe there is a better way instead of map reduce but I couldn't work it out
-    update_attribute(:handicap,(((counted_rounds.map{|x| x.differential}.reduce(:+) / n) * 0.93 * 10).floor / 10.0))
+    update_attribute(:handicap,[(((counted_rounds.map{|x| [x.differential,40].min}.reduce(:+) / n) * 0.93 * 10).floor / 10.0),36.4].min)
   end
 
 end
