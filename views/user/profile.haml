@@ -24,6 +24,8 @@
     -if @this_user == @user
       %a{href: '/user/edit'}
         %button.button-default Edit my profile
+    -if @this_user == @user || @user.id == 1
+      %a{href: "/user/profile/#{@this_user.id}/refresh"} Force handicap refresh
   .col-md-8
     .panel.panel-default
       .panel-heading
@@ -55,6 +57,6 @@
             %tfoor
               %tr
                 %td{colspan: 5}
-                  Page 
+                  Page
                   -(1..10).each do |n|
                     %a{href: "?p=#{n}"}=n
