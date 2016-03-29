@@ -26,7 +26,6 @@ module Auth
     !(@user.nil? || @user['email'].nil?)
   end
 
-  # TODO: create admin users instead of just using user #1
   def authorize_admin
     unless logged_in_user_is_admin?
       flash[:error] = 'You are not authorised to do that'
