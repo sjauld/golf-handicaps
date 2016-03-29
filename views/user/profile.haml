@@ -6,7 +6,7 @@
     .panel.panel-default
       .panel-heading
         %h3.panel-title
-          %i.fa.fa-fw.fa-user
+          %i.fa.fa-fw{class: "#{@this_user.sex == 'F' ? 'fa-female' : 'fa-male'}"}
           %span.text User Profile
       .table-responsive
         .table.table-hover
@@ -21,9 +21,9 @@
               %tr
                 %th{scope: :row} Handicap
                 %td=@this_user.handicap
-    -if @this_user == @user
-      %a{href: '/users/edit'} Edit my profile
-      | 
+    -if @this_user == @user || logged_in_user_is_admin?
+      %a{href: "/users/#{@this_user.id}/edit"} Edit my profile
+      |
     -if @this_user == @user || logged_in_user_is_admin?
       %a{href: "/users/#{@this_user.id}/refresh"} Force handicap refresh
   .col-md-8
