@@ -1,15 +1,23 @@
 %h3 Add a user
 %form{action: '#', method: 'post'}
   .form-group
-    %label{for: 'name'} Name
+    %label{for: 'name'} Full Name
     %input.form-control{type: 'text', name: 'name', placeholder: 'Bruce'}
   .form-group
     %label{for: 'name'} Nickname
-    %input.form-control{type: 'text', name: 'first_name', placeholder: 'Bruce'}  
+    %input.form-control{type: 'text', name: 'first_name', placeholder: 'Bruce'}
   .form-group
     %label{for: 'website'} Email
-    %input.form-control{type: 'text', name: 'email', placeholder: 'bruce@rules.com'}
+    %input.form-control{type: 'text', name: 'email', placeholder: 'bruce@rules.com', required: true}
   .form-group
-    %label{for: 'image'} Image
-    %input.form-control{type: 'text', name: 'image', placeholder: 'https://www.chatswoo.com/golf.jpg'}
+    %label{for: 'sex'} Sex
+    .form-control
+      %label.radio-inline
+        %input{name: 'sex', value: 'M', type: 'radio'}
+        %i.fa.fa-male
+        Male
+      %label.radio-inline
+        %input{name: 'sex', value: 'F', type: 'radio'}
+        %i.fa.fa-female
+        Female
   %button.btn.btn-default{type: 'submit'} Add user!
