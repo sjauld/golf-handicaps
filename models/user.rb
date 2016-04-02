@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
+  include Gravtastic
+
   has_many :rounds
   has_and_belongs_to_many :competitions
   has_secure_password validations: false
+  is_gravtastic
 
   def update_handicap
     # TODO: this can be removed once the database is cleaned
