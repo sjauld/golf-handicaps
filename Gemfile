@@ -12,10 +12,13 @@ source 'https://rubygems.org' do
     gem 'sinatra-asset-pipeline'
     gem 'uglifier'
     gem 'dotenv'
-    gem 'bcrypt', '~> 3.1.7'
     gem 'redis'
     gem 'postmark'
     gem 'mail'
+
+    # User extensions
+    gem 'bcrypt', '~> 3.1.7'
+    gem 'gravtastic'
   end
 
   group :development do

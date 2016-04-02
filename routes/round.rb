@@ -60,7 +60,7 @@ class App < Sinatra::Base
 
   get '/round/:id/delete' do
     round = Round.find(params[:id])
-    if round.user.id == @user.id || @user.id == 1
+    if round.user.id == @user.id || logged_in_user_is_admin?
       round.delete
       flash[:notice] = 'Success'
     else

@@ -2,10 +2,12 @@ class App < Sinatra::Base
 
   # Add courses!
   get '/course/add' do
+    authorize
     haml :'course/add'
   end
 
   post '/course/add' do
+    authorize
     nice_params = escape_html_for_set(params)
     course = Course.create({name: params['name'], website: params['website'], image: params['image']})
     flash[:notice] = 'Course created successfully!'
@@ -27,11 +29,13 @@ class App < Sinatra::Base
 
   # Add some tees
   get '/course/:id/add-tee' do
+    authorize
     @course = Course.find(params[:id])
     haml :'course/add_tee'
   end
 
   post '/course/:id/add-tee' do
+    authorize
     @course = Course.find(params[:id])
     @course.tees.new({colour: params[:colour], acr: params[:acr], slope: params[:slope], par: params[:par]}).save
     flash[:notice] = 'Tee created successfully!'

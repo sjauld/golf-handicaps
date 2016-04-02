@@ -1,0 +1,23 @@
+%h3 Edit your profile
+%form{action: '#', method: 'post'}
+  .form-group
+    %label{for: 'name'} Name
+    %input.form-control{type: 'text', name: 'name', value: @this_user.name}
+  .form-group
+    %label{for: 'name'} Nickname
+    %input.form-control{type: 'text', name: 'first_name', value: @this_user.first_name}
+  .form-group
+    %label{for: 'website'} Email
+    %input.form-control{type: 'text', name: 'email', disabled: true, value: @this_user.email}
+  .form-group
+    %label{for: 'sex'} Sex
+    .form-control
+      %label.radio-inline
+        %input{name: 'sex', value: 'M', type: 'radio', checked: @this_user.sex != 'F'}
+        %i.fa.fa-male
+        Male
+      %label.radio-inline
+        %input{name: 'sex', value: 'F', type: 'radio', checked: @this_user.sex == 'F'}
+        %i.fa.fa-female
+        Female
+  %button.btn.btn-default{type: 'submit'} Update user!

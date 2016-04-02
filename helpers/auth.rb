@@ -7,7 +7,7 @@ module Auth
           email: session['email'],
           first_name: session['first_name'],
           last_name: session['last_name'],
-          image: session['image']
+          sex: session['sex']
         )
       end
       @user = User.where(email: session['email']).first
@@ -26,9 +26,23 @@ module Auth
     !(@user.nil? || @user['email'].nil?)
   end
 
-  # TODO: create admin users instead of just using user #1
   def authorize_admin
-    unless @user.id == 1
+    unless logged_in_user_is_admin?
+      flash[:error] = 'You are not authorised to do that'
+      redirect '/'
+    end
+  end
+
+  def logged_in_user_is_admin?
+    @user.nil? ? false : @user.admin?
+  end
+
+  def logged_in_user_is?(user)
+    @user.nil? ? false : @user.id == user.id
+  end
+
+  def authorize_can_edit_user(user)
+    unless logged_in_user_is?(user) || logged_in_user_is_admin?
       flash[:error] = 'You are not authorised to do that'
       redirect '/'
     end

@@ -40,7 +40,7 @@
       .col-md-4
         .form-group
           %label.control-label{for: 'comp_type'} Competition type
-          %select.form-control{name: 'comp_type', required: true}
+          %select.form-control#comptype{name: 'comp_type', required: true}
             %option{value: 'S'} Stableford
             %option{value: 'P'} Par
             %option{value: 'K'} Stroke
@@ -49,6 +49,7 @@
           %label.control-label{for: 'score'} Score
           .input-group
             %input.form-control{type: 'text', name: 'score', required: true, placeholder: '36'}
+          .help-block#score Stableford points
       .col-md-4
         .form-group
           %label.control-label{for: 'played_off'} Played off
@@ -63,4 +64,12 @@
 :javascript
   $(document).ready( function() {
     $('#date').datetimepicker({locale: 'en-au', format: 'YYYY-MM-DD'});
+  });
+
+  $('#comptype').change( function() {
+    if ($('#comptype').val() === 'P') {
+      $('#score').text('Par score')
+    } else {
+      $('#score').text('Stableford points')
+    }
   });
