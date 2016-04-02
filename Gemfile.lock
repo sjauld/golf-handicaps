@@ -84,6 +84,8 @@ GEM
     rails-assets-moment (2.11.2)
     rails-assets-moment-timezone (0.5.0)
       rails-assets-moment (>= 2.6.0)
+    rails-assets-multiselect (0.9.12)
+      rails-assets-jquery (>= 1.7.1)
     rake (10.5.0)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
@@ -161,6 +163,7 @@ DEPENDENCIES
   rails-assets-jquery!
   rails-assets-jquery.validation!
   rails-assets-moment!
+  rails-assets-multiselect!
   redis!
   rerun!
   sinatra!

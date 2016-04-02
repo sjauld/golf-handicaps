@@ -40,5 +40,6 @@ source 'https://rails-assets.org' do
     gem 'rails-assets-jquery'
     gem 'rails-assets-moment'
     gem 'rails-assets-jquery.validation'
+    gem 'rails-assets-multiselect'
   end
 end
