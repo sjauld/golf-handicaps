@@ -27,7 +27,7 @@
           .input-group#date
             %span.input-group-addon{for: 'date'}
               %i.fa.fa-calendar
-            %input.form-control{type: 'text', name: 'date', placeholder: '2016-02-29', required: true}
+            %input.form-control{type: 'text', name: 'date', placeholder: Date.today.strftime('%Y-%m-%d'), required: true}
       .col-md-4
         .form-group
           %label.control-label{for: 'user'} User

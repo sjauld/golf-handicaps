@@ -13,6 +13,12 @@ source 'https://rubygems.org' do
     gem 'uglifier'
     gem 'dotenv'
     gem 'redis'
+
+    # pagination
+    gem 'kaminari', :require => 'kaminari/sinatra'
+    # gem 'padrino-helpers' TODO: work out how to work this without breaking everything
+
+    # email functionality
     gem 'postmark'
     gem 'mail'
 
@@ -40,5 +46,6 @@ source 'https://rails-assets.org' do
     gem 'rails-assets-jquery'
     gem 'rails-assets-moment'
     gem 'rails-assets-jquery.validation'
+    gem 'rails-assets-multiselect'
   end
 end

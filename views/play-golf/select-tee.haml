@@ -1,0 +1,18 @@
+%h3 Select your tee
+%form{action: '#', method: 'post'}
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        %span.text Hmmm
+    .panel-body
+      .col-md-4
+        .form-group
+          %label.control-label{for: 'tee'} Tee
+          %select.form-control{ name: 'tee', required: true}
+            -@my_course.tees.each do |tee|
+              %option{value: tee.id}="#{tee.colour} (Par #{tee.par}, ACR #{tee.acr}, Slope #{tee.slope})"
+      .col-md-4
+        .form-group
+          %label.control-label Submit
+          .input-group
+            %button.btn.btn-default{type: 'submit'} Let's go!

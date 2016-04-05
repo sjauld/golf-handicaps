@@ -1,0 +1,29 @@
+%h3 Great Idea! Let's Play Golf!
+%form{action: '#', method: 'post'}
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        %span.text Who and where?
+    .panel-body
+      .col-md-4
+        .form-group
+          %label.control-label{for: 'course'} Course
+          %select.form-control{ name: 'course', required: true}
+            -@courses.each do |course|
+              %option{value: course.id}=course.name
+      .col-md-4
+        .form-group
+          %label.control-label{for: 'players'} Players
+          %select.form-control#players{ name: 'players[]', multiple: true, required: true}
+            -all_users.each do |user|
+              %option{value: user.id}=user.name
+      .col-md-4
+        .form-group
+          %label.control-label Submit
+          .input-group
+            %button.btn.btn-default{type: 'submit'} Let's go!
+
+:javascript
+  $(document).ready(function() {
+    $("#players").multiSelect()
+  })
