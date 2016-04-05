@@ -56,7 +56,4 @@
                         %i.fa.fa-bomb
             %tfoor
               %tr
-                %td{colspan: 5}
-                  Page
-                  -(1..10).each do |n|
-                    %a{href: "?p=#{n}"}=n
+                -# %td{colspan: 5}=paginate @rounds

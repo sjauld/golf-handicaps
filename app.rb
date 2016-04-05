@@ -23,6 +23,9 @@ class App < Sinatra::Base
     register Sinatra::Flash
     helpers Sinatra::RedirectWithFlash
 
+    # pagination with Kaminari
+    # register Kaminari::Helpers::SinatraHelpers
+
     # Actual Rails Assets integration, everything else is Sprockets
     if defined?(RailsAssets)
       RailsAssets.load_paths.each do |path|
