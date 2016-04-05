@@ -37,11 +37,41 @@ class App < Sinatra::Base
     haml :'play-golf/select-tee'
   end
 
+  post '/play-golf/select-tee' do
+    saved_params = JSON.parse($redis.get(session['redis_session_id']))
+    my_tee = Tee.find(params[:tee])
+    saved_params[:tees] = [my_tee]
+    $redis.set(session['redis_session_id'],saved_params.to_json)
+    redirect '/play-golf/finalise'
+  end
+
   # Let's doo it
   get '/play-golf/finalise' do
-    saved_params = JSON.parse($redis.get(session['redis_session_id']))
-    @my_course = Course.find(saved_params['course']['id'])
-    @my_course.inspect
+    @saved_params = JSON.parse($redis.get(session['redis_session_id']))
+    raise 'Something went horribly wrong :(' if @saved_params['tees'].count != 1
+    @players = User.find(@saved_params['players'])
+    haml :'play-golf/finalise'
+  end
+
+  post '/play-golf/finalise' do
+    @saved_params = JSON.parse($redis.get(session['redis_session_id']))
+    puts params.inspect
+    puts @saved_params.inspect
+
+    params['user'].each do |k,v|
+      user = User.find(k)
+      round = user.rounds.create(
+        played_date: Date.parse(params['date']),
+        playing_handicap: v['played_off'],
+        format: params['format'],
+        score: v['score'],
+        tee_id: params['tee']
+      )
+      #TODO: can this be done in the model?
+      round.update_round_statistics
+    end
+    flash[:notice] = 'Rounds added successfully!'
+    redirect '/'
   end
 
 

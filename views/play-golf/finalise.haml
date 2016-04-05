@@ -1,0 +1,65 @@
+%h3 Now you're ready to hit the course!
+%form{action: '#', method: 'post'}
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        %span.text Round details
+    .panel-body
+      .col-md-4
+        %table.table.table-hover.table-striped
+          %tbody
+            %tr
+              %th{scope: :row} Course
+              %td=@saved_params['course']['name']
+            %tr
+              %th{scope: :row} Tees
+              %td=@saved_params['tees'].first['colour']
+              %input{name: 'tee', type: 'hidden', value: @saved_params['tees'].first['id']}
+            %tr
+              %th{scope: :row} ACR
+              %td=@saved_params['tees'].first['acr']
+            %tr
+              %th{scope: :row} Par
+              %td=@saved_params['tees'].first['par']
+            %tr
+              %th{scope: :row} Slope
+              %td=@saved_params['tees'].first['slope']
+      .col-md-8
+        %table.table.table-hover.table-striped
+          %thead
+            %tr
+              %th{scope: :col} Name (Handicap)
+              %th{scope: :col} Today's Playing Handicap
+              %th{scope: :col} Score
+          %tbody
+            -@players.each do |r|
+              %tr
+                %th{scope: :row}="#{r.name} (#{r.handicap})"
+                %td
+                  %input.form-control{name: "user[#{r.id}][played_off]", type: 'text', required: true, value: (r.handicap.to_i * @saved_params['tees'].first['slope'].to_i / 113.0).round}
+                %td
+                  %input.form-control{name: "user[#{r.id}][score]", type: 'text', required: true}
+      .col-md-4
+        .form-group
+          %label{for: 'format'} Format
+          %select.form-control{ name: 'format', required: true}
+            %option{value: 'S'} Stableford
+            %option{value: 'P'} Par
+            %option{value: 'K'} Stroke
+      .col-md-4
+        .form-group
+          %label{for: 'date'} Date
+          .input-group#date
+            %span.input-group-addon{for: 'date'}
+              %i.fa.fa-calendar
+            %input.form-control{type: 'text', name: 'date', placeholder: Date.today.strftime('%Y-%m-%d'), required: true}
+      .col-md-4
+        .form-group
+          %label.control-label Submit
+          .input-group
+            %button.btn.btn-default{type: 'submit'} Let's go!
+
+:javascript
+  $(document).ready( function() {
+    $('#date').datetimepicker({locale: 'en-au', format: 'YYYY-MM-DD'});
+  });
