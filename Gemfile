@@ -13,6 +13,12 @@ source 'https://rubygems.org' do
     gem 'uglifier'
     gem 'dotenv'
     gem 'redis'
+
+    # pagination
+    gem 'kaminari', :require => 'kaminari/sinatra'
+    # gem 'padrino-helpers' TODO: work out how to work this without breaking everything
+
+    # email functionality
     gem 'postmark'
     gem 'mail'
 
