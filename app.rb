@@ -37,12 +37,13 @@ class App < Sinatra::Base
     redis_uri = URI.parse(ENV["REDISCLOUD_URL"])
     $redis = Redis.new(:host => redis_uri.host, :port => redis_uri.port, :password => redis_uri.password)
 
+    use Rack::Session::Cookie, secret: Digest::SHA2.hexdigest("#{ENV['MY_SECRET']}")
+
   end
 
 end
 
 require './config/environments'
-require './extensions/google_oauth2'
 require './routes/init'
 require './helpers/init'
 require './models/init'

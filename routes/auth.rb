@@ -2,6 +2,7 @@ class App < Sinatra::Base
 
   before '/*' do
     build_user
+    puts session.inspect
   end
 
   # Unauthorized
