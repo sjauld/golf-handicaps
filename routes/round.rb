@@ -22,8 +22,6 @@ class App < Sinatra::Base
       score: params['score'],
       tee_id: params['tee']
     )
-    #TODO: can this be done in the model?
-    round.update_round_statistics
     flash[:notice] = 'Round added'
     redirect "/round/add?tee=#{params['tee']}"
   end

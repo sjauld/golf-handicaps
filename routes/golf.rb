@@ -67,8 +67,6 @@ class App < Sinatra::Base
         score: v['score'],
         tee_id: params['tee']
       )
-      #TODO: can this be done in the model?
-      round.update_round_statistics
     end
     flash[:notice] = 'Rounds added successfully!'
     redirect '/'
