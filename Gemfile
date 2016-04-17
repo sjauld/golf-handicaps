@@ -15,7 +15,6 @@ source 'https://rubygems.org' do
     gem 'redis'
 
     # pagination
-    gem 'kaminari', :require => 'kaminari/sinatra'
     # gem 'padrino-helpers' TODO: work out how to work this without breaking everything
 
     # email functionality
