@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328235031) do
+ActiveRecord::Schema.define(version: 20160417210301) do
+
+  create_table "batches", force: :cascade do |t|
+    t.integer "dsr"
+    t.float   "wca"
+    t.float   "cpa"
+    t.string  "format"
+    t.string  "sex"
+    t.date    "date"
+    t.integer "tee_id"
+  end
 
   create_table "competitions", force: :cascade do |t|
     t.string  "name"
@@ -45,6 +55,11 @@ ActiveRecord::Schema.define(version: 20160328235031) do
     t.integer "adjusted_gross_score"
     t.float   "differential"
     t.float   "daily_scratch_rating"
+    t.float   "normal_deduction"
+    t.float   "weighting_factor"
+    t.float   "ga_handicap"
+    t.boolean "excluded_from_dsr_calculations"
+    t.integer "batch_id"
   end
 
   create_table "seasons", force: :cascade do |t|

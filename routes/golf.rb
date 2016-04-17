@@ -55,17 +55,19 @@ class App < Sinatra::Base
 
   post '/play-golf/finalise' do
     @saved_params = JSON.parse($redis.get(session['redis_session_id']))
-    puts params.inspect
-    puts @saved_params.inspect
-
+    batch = Batch.new(sex: 'X')
     params['user'].each do |k,v|
+      if batch.sex.upcase != user.sex.upcase
+        batch = Batch.find_or_create_by(tee_id: params['tee'], date: Date.parse(params['date']), sex: user.sex.upcase, format: params['format'])
+      end
       user = User.find(k)
       round = user.rounds.create(
         played_date: Date.parse(params['date']),
         playing_handicap: v['played_off'],
         format: params['format'],
         score: v['score'],
-        tee_id: params['tee']
+        tee_id: params['tee'],
+        batch_id: batch.id
       )
     end
     flash[:notice] = 'Rounds added successfully!'

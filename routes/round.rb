@@ -15,12 +15,16 @@ class App < Sinatra::Base
   end
 
   post '/round/add' do
-    round = User.find(params[:user]).rounds.create(
+    # check if there is a batch of rounds
+    user = User.find(params['user'])
+    batch = Batch.find_or_create_by(tee_id: params['tee'], date: Date.parse(params['date']), sex: user.sex.upcase, format: params['comp_type'])
+    batch.rounds.create(
       played_date: Date.parse(params['date']),
       playing_handicap: params['played_off'],
       format: params['comp_type'],
       score: params['score'],
-      tee_id: params['tee']
+      tee_id: params['tee'],
+      user_id: params['user']
     )
     flash[:notice] = 'Round added'
     redirect "/round/add?tee=#{params['tee']}"
