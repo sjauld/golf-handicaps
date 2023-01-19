@@ -89,7 +89,7 @@ GEM
     postmark (1.7.1)
       json
       rake
-    rack (1.6.4)
+    rack (1.6.13)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
